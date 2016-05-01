@@ -1,0 +1,3 @@
+[submodule "ProofGeneral"]
+	path = ProofGeneral
+	url = git@github.com:ProofGeneral/PG.git

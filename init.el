@@ -12,7 +12,7 @@
 ;    correct behavior of home and end keys
 (global-set-key [home] 'beginning-of-line)
 (global-set-key [end] 'end-of-line)
-
+;-----------------------------------------------------------------------------------------
 ;; Packages
 (require 'package)
 (add-to-list 'package-archives
@@ -31,25 +31,26 @@
  (or (package-installed-p package)
      (if (y-or-n-p (format "Package %s is missing.  Install it? " package))
 	 (package-install package))))
+;-----------------------------------------------------------------------------------------
 
 ;; Load monokai theme
 (check-install-package 'monokai-theme)
 (load-theme 'monokai t)
-
+;-----------------------------------------------------------------------------------------
 ;;  fill-column-mode
 (check-install-package 'column-enforce-mode)
 (require 'column-enforce-mode)
 (setq column-enforce-column 90)
 (add-hook 'prog-mode-hook 'column-enforce-mode)
 (add-hook 'coq-mode-hook 'column-enforce-mode)
-
+;-----------------------------------------------------------------------------------------
 ;; Agda input method for math/unicode input
 (load-file "~/.emacs.d/agda-input.el")
 (require 'agda-input)
-
+;-----------------------------------------------------------------------------------------
 ;; Tuareg for OCaml
 (load-file "~/.emacs.d/tuareg/tuareg-site-file.el")
-
+;-----------------------------------------------------------------------------------------
 ;; Coq and Proof General
 (load-file "~/.emacs.d/ProofGeneral/generic/proof-site.el")
 (custom-set-variables
@@ -69,10 +70,17 @@
 ;; Load company-coq when opening Coq files
 (check-install-package 'company-coq)
 (add-hook 'coq-mode-hook #'company-coq-mode)
-
+;-----------------------------------------------------------------------------------------
 ;; Enable ispell -- requires aspell to be installed.
+(defun enable_spelling ()
+  (progn (setq ispell-program-name "/usr/local/bin/aspell"
+	       ispell-dictionary "english")
+	 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
+	 (add-hook 'coq-mode-hook 'flyspell-prog-mode)
+	 )
+  )
+
 (if (file-exists-p "/usr/local/bin/aspell")
-    (setq ispell-program-name "/usr/local/bin/aspell"
-	  ispell-dictionary "english")
-  ()
+    (enable_spelling)
+  (message "aspell was not detected and therefore not enabled!")
   )

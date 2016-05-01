@@ -32,10 +32,9 @@
      (if (y-or-n-p (format "Package %s is missing.  Install it? " package))
 	 (package-install package))))
 
-;; Solarized theme
-(check-install-package 'color-theme)
-(load-file "~/.emacs.d/color-theme-solarized.el")
-(color-theme-solarized 'dark)
+;; Load monokai theme
+(check-install-package 'monokai-theme)
+(load-theme 'monokai t)
 
 ;;  fill-column-mode
 (check-install-package 'column-enforce-mode)

@@ -1,3 +1,6 @@
 [submodule "ProofGeneral"]
 	path = ProofGeneral
 	url = git@github.com:ProofGeneral/PG.git
+[submodule "tuareg"]
+	path = tuareg
+	url = git@github.com:ocaml/tuareg.git

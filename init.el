@@ -1,3 +1,18 @@
+;; General settings
+;    show line number
+(global-linum-mode t)
+;    disable startup message
+(setq inhibit-startup-message t)
+;    no new line at the end
+(setq require-final-newline t)
+;    delete selected text and replace it
+(delete-selection-mode 1)
+;    show column number
+(column-number-mode 1)
+;    correct behavior of home and end keys
+(global-set-key [home] 'beginning-of-line)
+(global-set-key [end] 'end-of-line)
+
 ;; Packages
 (require 'package)
 (add-to-list 'package-archives
@@ -22,20 +37,13 @@
 (load-file "~/.emacs.d/color-theme-solarized.el")
 (color-theme-solarized 'dark)
 
-;; General settings
-;    show line number
-(global-linum-mode t)
-;    disable startup message
-(setq inhibit-startup-message t)
-;    no new line at the end
-(setq require-final-newline t)
-;    delete selected text and replace it
-(delete-selection-mode 1)
-;    show column number
-(column-number-mode 1)
-;    correct behavior of home and end keys
-(global-set-key [home] 'beginning-of-line)
-(global-set-key [end] 'end-of-line)
+;;  fill-column-mode
+(check-install-package 'column-enforce-mode)
+(require 'column-enforce-mode)
+(setq column-enforce-column 90)
+(define-globalized-minor-mode global-cle-mode column-enforce-mode
+  (lambda () (column-enforce-mode 1)))
+(global-cle-mode 1)
 
 ;; Agda input method for math/unicode input
 (load-file "~/.emacs.d/agda-input.el")

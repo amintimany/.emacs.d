@@ -40,9 +40,8 @@
 (check-install-package 'column-enforce-mode)
 (require 'column-enforce-mode)
 (setq column-enforce-column 90)
-(define-globalized-minor-mode global-cle-mode column-enforce-mode
-  (lambda () (column-enforce-mode 1)))
-(global-cle-mode 1)
+(add-hook 'prog-mode-hook 'column-enforce-mode)
+(add-hook 'coq-mode-hook 'column-enforce-mode)
 
 ;; Agda input method for math/unicode input
 (load-file "~/.emacs.d/agda-input.el")

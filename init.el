@@ -67,12 +67,26 @@
 (check-install-package 'company-coq)
 (add-hook 'coq-mode-hook #'company-coq-mode)
 ;-----------------------------------------------------------------------------------------
+;; Making a mode git-mode and a global-flyspell-mode.
+;; We add enabling global-flyspell-mode (when aspell is available) at git-mode-hook below.
+;; To enable git-mode for git commits use:
+;;
+;;           `git config --global core.editor "emacs -f git-mode"`
+;;
+
+(define-globalized-minor-mode global-flyspell-mode flyspell-mode
+  (lambda () (flyspell-mode 1)))
+
+(define-minor-mode git-mode "mode for git messages" :lighter " git" :global t)
+
+;-----------------------------------------------------------------------------------------
 ;; Enable ispell -- requires aspell to be installed.
 (defun enable_spelling ()
   (progn (setq ispell-program-name "/usr/local/bin/aspell"
 	       ispell-dictionary "english")
 	 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 	 (add-hook 'coq-mode-hook 'flyspell-prog-mode)
+	 (add-hook 'git-mode-hook 'global-flyspell-mode)
 	 )
   )
 

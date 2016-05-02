@@ -1,8 +1,6 @@
 ;; General settings
 ;    disable startup message
 (setq inhibit-startup-message t)
-;    no new line at the end
-(setq require-final-newline t)
 ;    delete selected text and replace it
 (delete-selection-mode 1)
 ;    show column number

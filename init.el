@@ -1,6 +1,4 @@
 ;; General settings
-;    show line number
-(global-linum-mode t)
 ;    disable startup message
 (setq inhibit-startup-message t)
 ;    no new line at the end

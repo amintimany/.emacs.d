@@ -36,13 +36,15 @@
 ;;  fill-column-mode
 (check-install-package 'column-enforce-mode)
 (require 'column-enforce-mode)
+(define-globalized-minor-mode global-column-enforce-mode column-enforce-mode
+  (lambda () (column-enforce-mode 1)))
 (setq column-enforce-column 90)
 (add-hook 'prog-mode-hook 'column-enforce-mode)
-(add-hook 'coq-mode-hook 'column-enforce-mode)
 ;-----------------------------------------------------------------------------------------
 ;; Agda input method for math/unicode input
 (load-file "~/.emacs.d/agda-input.el")
 (require 'agda-input)
+(defun enable-agda-input () (set-input-method "Agda"))
 ;-----------------------------------------------------------------------------------------
 ;; Tuareg for OCaml
 (load-file "~/.emacs.d/tuareg/tuareg-site-file.el")
@@ -59,9 +61,8 @@
  '(proof-three-window-mode-policy (quote hybrid))
  '(show-paren-mode t))
 
-(defun coq-set-up () (set-input-method "Agda"))
-
-(add-hook 'coq-mode-hook 'coq-set-up)
+(add-hook 'coq-mode-hook 'enable-agda-input)
+(add-hook 'coq-mode-hook 'column-enforce-mode)
 
 ;; Load company-coq when opening Coq files
 (check-install-package 'company-coq)
@@ -77,7 +78,14 @@
 (define-globalized-minor-mode global-flyspell-mode flyspell-mode
   (lambda () (flyspell-mode 1)))
 
-(define-minor-mode git-mode "mode for git messages" :lighter " git" :global t)
+(define-minor-mode git-mode "mode for git messages" :lighter " git-co" :global t)
+
+;; Setting up the git-mode.
+
+(defun set-column-enforce-column-for-git () (setq column-enforce-column 80))
+
+(add-hook 'git-mode-hook 'set-column-enforce-column-for-git)
+(add-hook 'git-mode-hook 'global-column-enforce-mode)
 
 ;-----------------------------------------------------------------------------------------
 ;; Enable ispell -- requires aspell to be installed.

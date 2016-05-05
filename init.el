@@ -1,14 +1,14 @@
 ;; General settings
-;    disable startup message
+;;    disable startup message
 (setq inhibit-startup-message t)
-;    delete selected text and replace it
+;;    delete selected text and replace it
 (delete-selection-mode 1)
-;    show column number
+;;    show column number
 (column-number-mode 1)
-;    correct behavior of home and end keys
+;;    correct behavior of home and end keys
 (global-set-key [home] 'beginning-of-line)
 (global-set-key [end] 'end-of-line)
-;-----------------------------------------------------------------------------------------
+;;----------------------------------------------------------------------------------------
 ;; Packages
 (require 'package)
 (add-to-list 'package-archives
@@ -24,15 +24,18 @@
 ;; Make sure a package exists
 ;; Inspired by https://github.com/tgross/emacs-init/blob/master/init.el
 (defun check-install-package (package)
- (or (package-installed-p package)
-     (if (y-or-n-p (format "Package %s is missing.  Install it? " package))
-	 (package-install package))))
-;-----------------------------------------------------------------------------------------
-
+  (or (package-installed-p package)
+      (if (y-or-n-p (format "Package %s is missing.  Install it? " package))
+	  (package-install package))))
+;;----------------------------------------------------------------------------------------
 ;; Load monokai theme
 (check-install-package 'monokai-theme)
 (load-theme 'monokai t)
-;-----------------------------------------------------------------------------------------
+;;----------------------------------------------------------------------------------------
+;; Show trailing white space
+(defun enable-show-trailing-whitespace () (setq show-trailing-whitespace t))
+(add-hook 'prog-mode-hook 'enable-show-trailing-whitespace)
+;;----------------------------------------------------------------------------------------
 ;;  fill-column-mode
 (check-install-package 'column-enforce-mode)
 (require 'column-enforce-mode)
@@ -40,15 +43,15 @@
   (lambda () (column-enforce-mode 1)))
 (setq column-enforce-column 90)
 (add-hook 'prog-mode-hook 'column-enforce-mode)
-;-----------------------------------------------------------------------------------------
+;;----------------------------------------------------------------------------------------
 ;; Agda input method for math/unicode input
 (load-file "~/.emacs.d/agda-input.el")
 (require 'agda-input)
 (defun enable-agda-input () (set-input-method "Agda"))
-;-----------------------------------------------------------------------------------------
+;;----------------------------------------------------------------------------------------
 ;; Tuareg for OCaml
 (load-file "~/.emacs.d/tuareg/tuareg-site-file.el")
-;-----------------------------------------------------------------------------------------
+;;----------------------------------------------------------------------------------------
 ;; Coq and Proof General
 (load-file "~/.emacs.d/ProofGeneral/generic/proof-site.el")
 (custom-set-variables
@@ -64,10 +67,12 @@
 (add-hook 'coq-mode-hook 'enable-agda-input)
 (add-hook 'coq-mode-hook 'column-enforce-mode)
 
+(add-hook 'coq-mode-hook 'enable-show-trailing-whitespace)
+
 ;; Load company-coq when opening Coq files
 (check-install-package 'company-coq)
 (add-hook 'coq-mode-hook #'company-coq-mode)
-;-----------------------------------------------------------------------------------------
+;;----------------------------------------------------------------------------------------
 ;; Making a mode git-mode and a global-flyspell-mode.
 ;; We add enabling global-flyspell-mode (when aspell is available) at git-mode-hook below.
 ;; To enable git-mode for git commits use:
@@ -87,7 +92,7 @@
 (add-hook 'git-mode-hook 'set-column-enforce-column-for-git)
 (add-hook 'git-mode-hook 'global-column-enforce-mode)
 
-;-----------------------------------------------------------------------------------------
+;;----------------------------------------------------------------------------------------
 ;; Enable ispell -- requires aspell to be installed.
 (defun enable_spelling ()
   (progn (setq ispell-program-name "/usr/local/bin/aspell"

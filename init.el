@@ -1,13 +1,15 @@
 ;; General settings
-;;    disable startup message
+;;    Disable startup message
 (setq inhibit-startup-message t)
-;;    delete selected text and replace it
+;;    Delete selected text and replace it
 (delete-selection-mode 1)
-;;    show column number
+;;    Show column number
 (column-number-mode 1)
-;;    correct behavior of home and end keys
+;;    Correct behavior of home and end keys
 (global-set-key [home] 'beginning-of-line)
 (global-set-key [end] 'end-of-line)
+;;    Start emacs in maximized mode
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
 ;;----------------------------------------------------------------------------------------
 ;; Packages
 (require 'package)

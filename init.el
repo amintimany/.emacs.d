@@ -96,7 +96,20 @@
 
 (add-hook 'git-mode-hook 'set-column-enforce-column-for-git)
 (add-hook 'git-mode-hook 'global-column-enforce-mode)
+(add-hook 'git-mode-hook 'enable-show-trailing-whitespace)
+;;----------------------------------------------------------------------------------------
+;; Set the note mode
+;; This part is best extracted in another file
+(define-minor-mode note-mode "mode for note files" :lighter "notes")
 
+(add-to-list 'auto-mode-alist '("\\.note\\'" . note-mode))
+
+(defun set-column-enforce-column-for-notes () (setq column-enforce-column 120))
+
+(add-hook 'note-mode-hook 'set-column-enforce-column-for-notes)
+(add-hook 'note-mode-hook 'global-column-enforce-mode)
+(add-hook 'note-mode-hook 'enable-show-trailing-whitespace)
+(add-hook 'note-mode-hook 'enable-agda-input)
 ;;----------------------------------------------------------------------------------------
 ;; Enable ispell -- requires aspell to be installed.
 (defun enable_spelling ()
@@ -105,6 +118,7 @@
 	 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 	 (add-hook 'coq-mode-hook 'flyspell-prog-mode)
 	 (add-hook 'git-mode-hook 'global-flyspell-mode)
+	 (add-hook 'note-mode-hook 'flyspell-mode)
 	 )
   )
 

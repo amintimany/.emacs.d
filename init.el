@@ -44,11 +44,13 @@
   show-trailing-whitespace (lambda () (enable-show-trailing-whitespace)))
 ;;----------------------------------------------------------------------------------------
 ;;  column-enforce-mode
-(check-install-package 'column-enforce-mode)
+;;(check-install-package 'column-enforce-mode)
+(load-file "~/.emacs.d/column-enforce-mode.el")
 (require 'column-enforce-mode)
 (define-globalized-minor-mode global-column-enforce-mode column-enforce-mode
   (lambda () (column-enforce-mode 1)))
 (setq column-enforce-column 90)
+(setq column-enforce-special-first-line 20)
 (add-hook 'prog-mode-hook 'column-enforce-mode)
 ;;----------------------------------------------------------------------------------------
 ;; Agda input method for math/unicode input
@@ -97,7 +99,9 @@
 
 ;; Setting up the git-mode.
 
-(defun set-column-enforce-column-for-git () (setq column-enforce-column 80))
+(defun set-column-enforce-column-for-git ()
+  (setq column-enforce-special-first-line 50)
+  (setq column-enforce-column 80))
 
 (add-hook 'git-mode-hook 'set-column-enforce-column-for-git)
 (add-hook 'git-mode-hook 'global-column-enforce-mode)

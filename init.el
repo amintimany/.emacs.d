@@ -37,6 +37,11 @@
 ;; Show trailing white space
 (defun enable-show-trailing-whitespace () (setq show-trailing-whitespace t))
 (add-hook 'prog-mode-hook 'enable-show-trailing-whitespace)
+;; define a global minor-mode for showing white spaces
+(define-minor-mode show-trailing-whitespace-mode "mode for git messages"
+  :lighter "")
+(define-globalized-minor-mode global-show-trailing-whitespace
+  show-trailing-whitespace (lambda () (enable-show-trailing-whitespace)))
 ;;----------------------------------------------------------------------------------------
 ;;  fill-column-mode
 (check-install-package 'column-enforce-mode)
@@ -96,7 +101,7 @@
 
 (add-hook 'git-mode-hook 'set-column-enforce-column-for-git)
 (add-hook 'git-mode-hook 'global-column-enforce-mode)
-(add-hook 'git-mode-hook 'enable-show-trailing-whitespace)
+(add-hook 'git-mode-hook 'global-show-trailing-whitespace)
 ;;----------------------------------------------------------------------------------------
 ;; Set the note mode
 ;; This part is best extracted in another file

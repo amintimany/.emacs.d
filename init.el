@@ -49,7 +49,10 @@
 ;; Agda input method for math/unicode input
 (load-file "~/.emacs.d/agda-input.el")
 (require 'agda-input)
-(defun enable-agda-input () (set-input-method "Agda"))
+(defun enable-agda-input () (interactive) (set-input-method "Agda"))
+;; Add an alias for the command 'enable-agda-input which is now interactive
+;; This means we can use M-x agd to enable Agda input method
+(defalias 'agd 'enable-agda-input)
 ;;----------------------------------------------------------------------------------------
 ;; Tuareg for OCaml
 (load-file "~/.emacs.d/tuareg/tuareg-site-file.el")

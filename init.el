@@ -43,7 +43,7 @@
 (define-globalized-minor-mode global-show-trailing-whitespace
   show-trailing-whitespace (lambda () (enable-show-trailing-whitespace)))
 ;;----------------------------------------------------------------------------------------
-;;  fill-column-mode
+;;  column-enforce-mode
 (check-install-package 'column-enforce-mode)
 (require 'column-enforce-mode)
 (define-globalized-minor-mode global-column-enforce-mode column-enforce-mode

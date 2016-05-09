@@ -10,6 +10,9 @@
 (global-set-key [end] 'end-of-line)
 ;;    Start emacs in maximized mode
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
+;;    Disable the C-z shortcut. It makes Emacs crash on OS X and
+;;    I sometimes press it unintentionally
+(global-unset-key (kbd "C-z"))
 ;;----------------------------------------------------------------------------------------
 ;; Packages
 (require 'package)

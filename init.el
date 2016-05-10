@@ -39,6 +39,10 @@
 (check-install-package 'monokai-theme)
 (load-theme 'monokai t)
 ;;----------------------------------------------------------------------------------------
+;; Company mode in emacs lisp
+(check-install-package 'company)
+(add-hook 'emacs-lisp-mode-hook 'company-mode)
+;;----------------------------------------------------------------------------------------
 ;; Show trailing white space
 (defun enable-show-trailing-whitespace () (setq show-trailing-whitespace t))
 (add-hook 'prog-mode-hook 'enable-show-trailing-whitespace)

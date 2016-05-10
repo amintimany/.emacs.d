@@ -13,6 +13,8 @@
 ;;    Disable the C-z shortcut. It makes Emacs crash on OS X and
 ;;    I sometimes press it unintentionally
 (global-unset-key (kbd "C-z"))
+;;    Disable tool-bar
+(tool-bar-mode -1)
 ;;----------------------------------------------------------------------------------------
 ;; Packages
 (require 'package)

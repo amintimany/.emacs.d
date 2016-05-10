@@ -43,6 +43,8 @@
 (check-install-package 'company)
 (add-hook 'emacs-lisp-mode-hook 'company-mode)
 ;;----------------------------------------------------------------------------------------
+(check-install-package 'magit)
+;;----------------------------------------------------------------------------------------
 ;; Show trailing white space
 (defun enable-show-trailing-whitespace () (setq show-trailing-whitespace t))
 (add-hook 'prog-mode-hook 'enable-show-trailing-whitespace)

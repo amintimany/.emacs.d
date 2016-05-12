@@ -59,7 +59,7 @@
 (require 'column-enforce-mode)
 (define-globalized-minor-mode global-column-enforce-mode column-enforce-mode
   (lambda () (column-enforce-mode 1)))
-(setq column-enforce-column 90)
+(setq column-enforce-column 80)
 (add-hook 'prog-mode-hook 'column-enforce-mode)
 ;;----------------------------------------------------------------------------------------
 ;; Agda input method for math/unicode input

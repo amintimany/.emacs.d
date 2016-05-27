@@ -17,7 +17,7 @@
 (global-unset-key (kbd "C-v"))
 ;;    Disable tool-bar
 (tool-bar-mode -1)
-;;----------------------------------------------------------------------------------------
+;;------------------------------------------------------------------------------
 ;; Packages
 (require 'package)
 (add-to-list 'package-archives
@@ -36,17 +36,17 @@
   (or (package-installed-p package)
       (if (y-or-n-p (format "Package %s is missing.  Install it? " package))
 	  (package-install package))))
-;;----------------------------------------------------------------------------------------
+;;------------------------------------------------------------------------------
 ;; Load monokai theme
 (check-install-package 'monokai-theme)
 (load-theme 'monokai t)
-;;----------------------------------------------------------------------------------------
+;;------------------------------------------------------------------------------
 ;; Company mode in emacs lisp
 (check-install-package 'company)
 (add-hook 'emacs-lisp-mode-hook 'company-mode)
-;;----------------------------------------------------------------------------------------
+;;------------------------------------------------------------------------------
 (check-install-package 'magit)
-;;----------------------------------------------------------------------------------------
+;;------------------------------------------------------------------------------
 ;; Show trailing white space
 (defun enable-show-trailing-whitespace () (setq show-trailing-whitespace t))
 (add-hook 'prog-mode-hook 'enable-show-trailing-whitespace)
@@ -55,7 +55,7 @@
   :lighter "")
 (define-globalized-minor-mode global-show-trailing-whitespace
   show-trailing-whitespace (lambda () (enable-show-trailing-whitespace)))
-;;----------------------------------------------------------------------------------------
+;;------------------------------------------------------------------------------
 ;;  column-enforce-mode
 (check-install-package 'column-enforce-mode)
 (require 'column-enforce-mode)
@@ -63,7 +63,7 @@
   (lambda () (column-enforce-mode 1)))
 (setq column-enforce-column 80)
 (add-hook 'prog-mode-hook 'column-enforce-mode)
-;;----------------------------------------------------------------------------------------
+;;------------------------------------------------------------------------------
 ;; Agda input method for math/unicode input
 (load-file "~/.emacs.d/agda-input.el")
 (require 'agda-input)
@@ -71,10 +71,10 @@
 ;; Add an alias for the command 'enable-agda-input which is now interactive
 ;; This means we can use M-x agd to enable Agda input method
 (defalias 'agd 'enable-agda-input)
-;;----------------------------------------------------------------------------------------
+;;------------------------------------------------------------------------------
 ;; Tuareg for OCaml
 (load-file "~/.emacs.d/tuareg/tuareg-site-file.el")
-;;----------------------------------------------------------------------------------------
+;;------------------------------------------------------------------------------
 ;; Coq and Proof General
 (load-file "~/.emacs.d/ProofGeneral/generic/proof-site.el")
 (custom-set-variables
@@ -95,10 +95,10 @@
 ;; Load company-coq when opening Coq files
 (check-install-package 'company-coq)
 (add-hook 'coq-mode-hook #'company-coq-mode)
-;;----------------------------------------------------------------------------------------
+;;------------------------------------------------------------------------------
 ;; Making a mode git-mode and a global-flyspell-mode.
-;; We add enabling global-flyspell-mode (when aspell is available) at git-mode-hook below.
-;; To enable git-mode for git commits use:
+;; We add enabling global-flyspell-mode (when aspell is available) at
+;; git-mode-hook below. To enable git-mode for git commits use:
 ;;
 ;;           `git config --global core.editor "emacs -f git-mode"`
 ;;
@@ -106,7 +106,8 @@
 (define-globalized-minor-mode global-flyspell-mode flyspell-mode
   (lambda () (flyspell-mode 1)))
 
-(define-minor-mode git-mode "mode for git messages" :lighter " git-co" :global t)
+(define-minor-mode git-mode "mode for git messages" :lighter " git-co"
+  :global t)
 
 ;; Setting up the git-mode.
 
@@ -115,7 +116,7 @@
 (add-hook 'git-mode-hook 'set-column-enforce-column-for-git)
 (add-hook 'git-mode-hook 'global-column-enforce-mode)
 (add-hook 'git-mode-hook 'global-show-trailing-whitespace)
-;;----------------------------------------------------------------------------------------
+;;------------------------------------------------------------------------------
 ;; Set the note mode
 ;; This part is best extracted in another file
 (define-minor-mode note-mode "mode for note files" :lighter "notes")
@@ -128,7 +129,7 @@
 (add-hook 'note-mode-hook 'global-column-enforce-mode)
 (add-hook 'note-mode-hook 'enable-show-trailing-whitespace)
 (add-hook 'note-mode-hook 'enable-agda-input)
-;;----------------------------------------------------------------------------------------
+;;------------------------------------------------------------------------------
 ;; Enable ispell -- requires aspell to be installed.
 (defun enable_spelling ()
   (progn (setq ispell-program-name "/usr/local/bin/aspell"

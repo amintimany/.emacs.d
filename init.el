@@ -145,3 +145,9 @@
     (enable_spelling)
   (message "aspell was not detected and therefore not enabled!")
   )
+;; If aspell is leaded, map mouse clicks. We can't (easily) do a mouse-2 without
+;; an actual mouse!
+(eval-after-load "flyspell"
+  '(progn
+     (define-key flyspell-mouse-map [down-mouse-3] #'flyspell-correct-word)
+     (define-key flyspell-mouse-map [mouse-3] #'undefined)))

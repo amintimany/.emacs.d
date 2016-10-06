@@ -17,6 +17,17 @@
 (global-unset-key (kbd "C-v"))
 ;;    Disable tool-bar
 (tool-bar-mode -1)
+;;-----------------------------------------------------------------------------
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(coq-double-hit-enable t)
+ '(coq-script-indent nil)
+ '(inhibit-startup-screen t)
+ '(proof-three-window-mode-policy (quote hybrid))
+ '(show-paren-mode t))
 ;;------------------------------------------------------------------------------
 ;; Packages
 (require 'package)
@@ -77,15 +88,6 @@
 ;;------------------------------------------------------------------------------
 ;; Coq and Proof General
 (load-file "~/.emacs.d/ProofGeneral/generic/proof-site.el")
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(coq-double-hit-enable t)
- '(inhibit-startup-screen t)
- '(proof-three-window-mode-policy (quote hybrid))
- '(show-paren-mode t))
 
 (add-hook 'coq-mode-hook 'enable-agda-input)
 (add-hook 'coq-mode-hook 'column-enforce-mode)
@@ -151,3 +153,18 @@
   '(progn
      (define-key flyspell-mouse-map [down-mouse-3] #'flyspell-correct-word)
      (define-key flyspell-mouse-map [mouse-3] #'undefined)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+;;------------------------------------------------------------------------------
+;; Disable indention
+
+(electric-indent-mode -1)
+(defun do-nothing () )
+(define-key global-map "\t" 'do-nothing)
+
+(load-file (let ((coding-system-for-read 'utf-8))
+                (shell-command-to-string "agda-mode locate")))

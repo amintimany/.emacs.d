@@ -56,6 +56,7 @@
 (check-install-package 'company)
 (add-hook 'emacs-lisp-mode-hook 'company-mode)
 ;;------------------------------------------------------------------------------
+;; magit -- the git mode for emacs; I am experimenting with it from time to time
 (check-install-package 'magit)
 ;;------------------------------------------------------------------------------
 ;; Show trailing white space

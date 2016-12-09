@@ -1,0 +1,49 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/Users/amin/Reports/" . "Aarhus-Reports/")
+ ("/Users/amin/runst/" . "text/")
+ ("/Users/amin/" . "Reports/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/Users/amin/Reports/Aarhus-Reports/"
+ "/Users/amin/.emacs.d/"
+ "/Users/amin/runst/text/"
+ "/Users/amin/runst/"
+ "/Users/amin/iris-treiber/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "Aarhus-Report.log"
+ "ECOST-STSM-CA15123-150816-080859-80859.pdf"
+ "init.el"
+ "main.tex"
+ "README"
+ "iris.sty"
+ "README.md"
+ "mon.v"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/Users/amin/Reports/Aarhus-Reports/" (22530 495 0 0) "ECOST-STSM-CA15123-150816-080859-80859.pdf" "Aarhus-Report.tex" "Aarhus-Report.synctex.gz" "Aarhus-Report.pdf" "Aarhus-Report.out" "Aarhus-Report.log" "Aarhus-Report.aux" "../" "./")
+
+ ("/Users/amin/Reports/" (22484 19569 0 0) "Aarhus-Reports/" ".gitignore~" ".gitignore" ".git/" ".DS_Store" "../" "./")
+
+ ("/Users/amin/runst/text/" (22590 48057 0 0) "README" "prelude.tex" "main.tex" "main.synctex.gz" "main.pdf" "main.out" "main.log" "main.aux" "iris.sty" "auto/" "../" "./")
+
+ ("/Users/amin/.emacs.d/" (22590 47985 0 0) "tuareg/" "README.md" "ProofGeneral/" "init.el~" "init.el" "ido.last~" "ido.last" "elpa/" "column-enforce-mode.el~" "auto-save-list/" "agda-input.el" ".gitmodules" ".gitignore" ".git/" "#git-mode.el#" "../" "./")
+
+ ("/Users/amin/runst/" (22590 43648 0 0) "text/" "README.md" "Makefile.coq" "Makefile" "iris-coq/" "coq/" "autosubst/" "_CoqProject" ".gitmodules" ".gitignore~" ".gitignore" ".git/" ".DS_Store" "../" "./")
+
+ ("/Users/amin/" (22590 47704 0 0) "VirtualBox VMs/" "verifast/" "UniverseComparator/" "tools/" "tmp/" "tinisshd/" "swop/" "SSH/" "short-logrel-notes/" "setcoq/" "runst/" "Reports/" "Public/" "Pictures/" "picosshd/" "patch.diff" "org-files/" "OPLSS/" "Music/" "Movies/" "math-comp/" "logrel-cc/" "Library/" "KUL-teaching/" "iris-treiber/" "iris-spanning-tree/" "iris-proofmode/" "iris-my-examples/" "iris-logrel/" "iris-effects/" "iris/" "homebrew-core/" "Fib/" "Dropbox/" "Downloads/" "Documents/" "Desktop/" "dep-io/" "CurriculumVitae/" "ctincoq8_5/" "CTDT/" "coq/" "column-enforce-mode/" "citcic-tmp/" "citcic/" "Categories-HoTT/" "Categories/" "cass/" "bin/" "autosubst/" "Arezoo/" "Applications/" "amintimany.github.io/" "ads/" ".zshrc~" ".zshrc.pre-oh-my-zsh" ".zshrc" ".zsh_history" ".zsh-update" ".zcompdump-Amin’s MacBook Pro-5.2" ".zcompdump-Amin’s MacBook Pro-5.0.8" ".zcompdump" ".wget-hsts" ".vscode/" ".viminfo" ".Trash/" ".subversion/" ".ssh/" ".sh_history" ".profile" ".oracle_jre_usage/" ".opam/" ".oh-my-zsh/" ".ocamlinit" ".local/" ".lesshst" ".hgignore_global" ".gitignore_global" ".gitconfig" ".git-credentials" ".git-completion.bash" ".ghc/" ".gem/" ".emacs.d/" ".DS_Store" ".dropbox/" ".cups/" ".config/" ".CFUserTextEncoding" ".cache/" ".cabal/" ".bundle/" ".bashrc~" ".bashrc" ".bash_sessions/" ".bash_profile~" ".bash_profile" ".bash_history" ".atom/" "../" "./")
+
+ ("/Users/amin/iris-treiber/" (22589 26976 0 0) "mon.v~" "mon.v" "../" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t

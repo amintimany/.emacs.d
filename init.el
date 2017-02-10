@@ -95,8 +95,8 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (## monokai-theme magit fill-column-indicator company-coq column-enforce-mode auctex)))
- '(preview-TeX-style-dir "/Users/amin/.emacs.d/elpa/auctex-11.89.7/latex")
+    (markdown-mode ## monokai-theme magit fill-column-indicator company-coq column-enforce-mode auctex)))
+ '(preview-TeX-style-dir "/Users/amin/.emacs.d/elpa/auctex-11.89.7/latex" t)
  '(proof-three-window-mode-policy (quote hybrid))
  '(show-paren-mode t))
 ;;------------------------------------------------------------------------------
@@ -123,16 +123,19 @@
 (check-install-package 'monokai-theme)
 (load-theme 'monokai t)
 ;;------------------------------------------------------------------------------
+;; Load the markdown-mode
+(check-install-package 'markdown-mode)
+;;------------------------------------------------------------------------------
 ;; Company mode in emacs lisp
 (check-install-package 'company)
 (add-hook 'emacs-lisp-mode-hook 'company-mode)
 ;;------------------------------------------------------------------------------
 ;; magit -- the git mode for emacs; I am experimenting with it from time to time
 (check-install-package 'magit)
-;;------------------------------------------------------------------------------
 ;; ido mode
 (require 'ido)
 (ido-mode t)
+;;------------------------------------------------------------------------------
 ;;------------------------------------------------------------------------------
 ;; Show trailing white space
 (defun enable-show-trailing-whitespace () (setq show-trailing-whitespace t))
@@ -216,6 +219,7 @@
 	 (add-hook 'coq-mode-hook 'flyspell-prog-mode)
 	 (add-hook 'git-mode-hook 'global-flyspell-mode)
 	 (add-hook 'note-mode-hook 'flyspell-mode)
+         (add-hook 'text-mode-hook 'flyspell-mode)
 	 )
   )
 
@@ -258,6 +262,10 @@
   )
 
 (global-set-key (kbd "C-c C--") 'comment-or-uncomment-line-or-region)
+
+
+;;------------------------------------------------------------------------------
+;; Set up tex mode
 
 ;;------------------------------------------------------------------------------
 ;; Run emacs server

@@ -90,15 +90,88 @@
      ("^html?$" "." "netscape %o"))))
  '(TeX-source-correlate-method (quote synctex))
  '(TeX-source-correlate-mode t)
+ '(compilation-message-face (quote default))
  '(coq-double-hit-enable t)
  '(coq-script-indent nil)
+ '(custom-safe-themes
+   (quote
+    ("3cd28471e80be3bd2657ca3f03fbb2884ab669662271794360866ab60b6cb6e6" "3cc2385c39257fed66238921602d8104d8fd6266ad88a006d0a4325336f5ee02" "e9776d12e4ccb722a2a732c6e80423331bcb93f02e089ba2a4b02e85de1cf00e" "1e67765ecb4e53df20a96fb708a8601f6d7c8f02edb09d16c838e465ebe7f51b" "6952b5d43bbd4f1c6727ff61bc9bf5677d385e101433b78ada9c3f0e3787af06" "4cbec5d41c8ca9742e7c31cc13d8d4d5a18bd3a0961c18eb56d69972bbcf3071" "b9cbfb43711effa2e0a7fbc99d5e7522d8d8c1c151a3194a4b176ec17c9a8215" "6de7c03d614033c0403657409313d5f01202361e35490a3404e33e46663c2596" "ed317c0a3387be628a48c4bbdb316b4fa645a414838149069210b66dd521733f" "938d8c186c4cb9ec4a8d8bc159285e0d0f07bad46edf20aa469a89d0d2a586ea" "6df30cfb75df80e5808ac1557d5cc728746c8dbc9bc726de35b15180fa6e0ad9" default)))
+ '(fci-rule-color "#49483E")
+ '(global-auto-revert-mode t)
+ '(highlight-changes-colors (quote ("#FD5FF0" "#AE81FF")))
+ '(highlight-tail-colors
+   (quote
+    (("#49483E" . 0)
+     ("#679A01" . 20)
+     ("#4BBEAE" . 30)
+     ("#1DB4D0" . 50)
+     ("#9A8F21" . 60)
+     ("#A75B00" . 70)
+     ("#F309DF" . 85)
+     ("#49483E" . 100))))
  '(inhibit-startup-screen t)
+ '(magit-diff-use-overlays nil)
  '(package-selected-packages
    (quote
-    (markdown-mode ## monokai-theme magit fill-column-indicator company-coq column-enforce-mode auctex)))
+    (sublime-themes paganini-theme moe-theme ample-theme markdown-mode ## monokai-theme magit fill-column-indicator company-coq column-enforce-mode auctex)))
+ '(pos-tip-background-color "#A6E22E")
+ '(pos-tip-foreground-color "#272822")
  '(preview-TeX-style-dir "/Users/amin/.emacs.d/elpa/auctex-11.89.7/latex" t)
  '(proof-three-window-mode-policy (quote hybrid))
- '(show-paren-mode t))
+ '(safe-local-variable-values
+   (quote
+    ((eval progn
+	   (let
+	       ((coq-root-directory
+		 (when buffer-file-name
+		   (locate-dominating-file buffer-file-name ".dir-locals.el")))
+		(coq-project-find-file
+		 (and
+		  (boundp
+		   (quote coq-project-find-file))
+		  coq-project-find-file)))
+	     (set
+	      (make-local-variable
+	       (quote tags-file-name))
+	      (concat coq-root-directory "TAGS"))
+	     (setq camldebug-command-name
+		   (concat coq-root-directory "dev/ocamldebug-coq"))
+	     (unless coq-project-find-file
+	       (set
+		(make-local-variable
+		 (quote compile-command))
+		(concat "make -C " coq-root-directory))
+	       (set
+		(make-local-variable
+		 (quote compilation-search-path))
+		(cons coq-root-directory nil)))
+	     (when coq-project-find-file
+	       (setq default-directory coq-root-directory)))))))
+ '(show-paren-mode t)
+ '(vc-annotate-background nil)
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#F92672")
+     (40 . "#CF4F1F")
+     (60 . "#C26C0F")
+     (80 . "#E6DB74")
+     (100 . "#AB8C00")
+     (120 . "#A18F00")
+     (140 . "#989200")
+     (160 . "#8E9500")
+     (180 . "#A6E22E")
+     (200 . "#729A1E")
+     (220 . "#609C3C")
+     (240 . "#4E9D5B")
+     (260 . "#3C9F79")
+     (280 . "#A1EFE4")
+     (300 . "#299BA6")
+     (320 . "#2896B5")
+     (340 . "#2790C3")
+     (360 . "#66D9EF"))))
+ '(vc-annotate-very-old-color nil)
+ '(weechat-color-list
+   (unspecified "#272822" "#49483E" "#F70057" "#F92672" "#86C30D" "#A6E22E" "#BEB244" "#E6DB74" "#40CAE4" "#66D9EF" "#FB35EA" "#FD5FF0" "#74DBCD" "#A1EFE4" "#F8F8F2" "#F8F8F0")))
 ;;------------------------------------------------------------------------------
 ;; Packages
 (require 'package)
@@ -119,9 +192,9 @@
       (if (y-or-n-p (format "Package %s is missing.  Install it? " package))
 	  (package-install package))))
 ;;------------------------------------------------------------------------------
-;; Load monokai theme
-(check-install-package 'monokai-theme)
-(load-theme 'monokai t)
+;; Load the theme
+(check-install-package 'sublime-themes)
+(load-theme 'junio t)
 ;;------------------------------------------------------------------------------
 ;; Load the markdown-mode
 (check-install-package 'markdown-mode)
@@ -136,10 +209,9 @@
 (require 'ido)
 (ido-mode t)
 ;;------------------------------------------------------------------------------
-;;------------------------------------------------------------------------------
 ;; Show trailing white space
 (defun enable-show-trailing-whitespace () (setq show-trailing-whitespace t))
-(add-hook 'prog-mode-hook 'enable-show-trailing-whitespace)
+;; (add-hook 'prog-mode-hook 'enable-show-trailing-whitespace)
 ;; define a global minor-mode for showing white spaces
 (define-minor-mode show-trailing-whitespace-mode "mode for git messages"
   :lighter "")
@@ -152,7 +224,7 @@
 (define-globalized-minor-mode global-column-enforce-mode column-enforce-mode
   (lambda () (column-enforce-mode 1)))
 (setq column-enforce-column 80)
-(add-hook 'prog-mode-hook 'column-enforce-mode)
+;; (add-hook 'prog-mode-hook 'column-enforce-mode)
 ;;------------------------------------------------------------------------------
 ;; Agda input method for math/unicode input
 (load-file "~/.emacs.d/agda-input.el")
@@ -162,6 +234,44 @@
 ;; This means we can use M-x agd to enable Agda input method
 (defalias 'agd 'enable-agda-input)
 ;;------------------------------------------------------------------------------
+;; Add opam emacs directory to the load-path
+(setq opam-share
+  (substring
+    (shell-command-to-string "opam config var share 2> /dev/null") 0 -1))
+(add-to-list 'load-path (concat opam-share "/emacs/site-lisp"))
+
+(setenv "PATH" (concat (getenv "PATH") ":/Users/amin/.cabal/bin:/Users/amin/.opam/4.02.1/bin/"))
+(setq exec-path (append exec-path '("/Users/amin/.opam/4.02.1/bin/")))
+(setq exec-path (append exec-path '("/Users/amin/.cabal/bin")))
+;;------------------------------------------------------------------------------
+;; set up for OCaml using Opam packages and more
+
+;; The ocp-index and ocp-indent programs installed from Opam
+(require 'ocp-indent)
+(require 'ocp-index)
+
+;; Load merlin-mode
+(require 'merlin)
+;; Start merlin on ocaml files
+(add-hook 'tuareg-mode-hook 'merlin-mode t)
+(add-hook 'caml-mode-hook 'merlin-mode t)
+;; Enable auto-complete
+(setq merlin-use-auto-complete-mode 'easy)
+;; Use opam switch to lookup ocamlmerlin binary
+(setq merlin-command 'opam)
+
+;; enable company for OCaml
+(add-hook 'tuareg-mode-hook 'company-mode t)
+(add-hook 'caml-mode-hook 'company-mode t)
+
+;; company-ocp-index (submodule)
+(load-file "~/.emacs.d/company-ocp-index/company-ocp-index.el")
+(require 'company-ocp-index)
+(defun enable-company-ocp-index ()
+(add-to-list (make-local-variable 'company-backends) 'company-ocp-index))
+(add-hook 'tuareg-mode-hook 'enable-company-ocp-index)
+(add-hook 'caml-mode-hook 'enable-company-ocp-index)
+
 ;; Tuareg for OCaml
 (load-file "~/.emacs.d/tuareg/tuareg-site-file.el")
 ;;------------------------------------------------------------------------------
@@ -193,10 +303,12 @@
 ;; Setting up the git-mode.
 
 (defun set-column-enforce-column-for-git () (setq column-enforce-column 80))
+(defun disable-ask-before-exit () (setq confirm-kill-emacs nil))
 
 (add-hook 'git-mode-hook 'set-column-enforce-column-for-git)
 (add-hook 'git-mode-hook 'global-column-enforce-mode)
 (add-hook 'git-mode-hook 'global-show-trailing-whitespace)
+(add-hook 'git-mode-hook 'disable-ask-before-exit)
 ;;------------------------------------------------------------------------------
 ;; Set the note mode
 ;; This part is best extracted in another file
@@ -242,9 +354,11 @@
 ;;------------------------------------------------------------------------------
 ;; Disable indention
 
-(electric-indent-mode -1)
-(defun do-nothing () )
-(define-key global-map "\t" 'do-nothing)
+ (electric-indent-mode -1)
+;; (defun do-nothing () )
+;; (define-key global-map "\t" 'do-nothing)
+
+;; agda-mode
 
 (load-file (let ((coding-system-for-read 'utf-8))
                 (shell-command-to-string "agda-mode locate")))
@@ -263,6 +377,9 @@
 
 (global-set-key (kbd "C-c C--") 'comment-or-uncomment-line-or-region)
 
+;;------------------------------------------------------------------------------
+;; Force emacs ask yes no question
+(setq confirm-kill-emacs 'y-or-n-p)
 
 ;;------------------------------------------------------------------------------
 ;; Set up tex mode

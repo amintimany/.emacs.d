@@ -4,3 +4,6 @@
 [submodule "tuareg"]
 	path = tuareg
 	url = git@github.com:ocaml/tuareg.git
+[submodule "company-ocp-index"]
+	path = company-ocp-index
+	url = git@github.com:nojb/company-ocp-index.git

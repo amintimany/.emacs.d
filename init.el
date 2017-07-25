@@ -234,7 +234,7 @@
 ;;------------------------------------------------------------------------------
 ;; Setting up the path and exec-path
 
-(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin:/Users/amin/.cabal/bin:/Users/amin/.opam/4.02.1/bin/"))
+(setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin/:/usr/local/bin:/Users/amin/.cabal/bin:/Users/amin/.opam/4.02.1/bin/"))
 (setq exec-path (append exec-path '("/Users/amin/.opam/4.02.1/bin/")))
 (setq exec-path (append exec-path '("/Users/amin/.cabal/bin")))
 ;;------------------------------------------------------------------------------

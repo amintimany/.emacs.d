@@ -8,8 +8,6 @@
 ;;    Correct behavior of home and end keys
 (global-set-key [home] 'beginning-of-line)
 (global-set-key [end] 'end-of-line)
-;;    Start emacs in maximized mode
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
 ;;    Disable the C-z shortcut. It makes Emacs crash on OS X and
 ;;    I sometimes press it unintentionally
 (global-unset-key (kbd "C-z"))
@@ -234,15 +232,17 @@
 ;; This means we can use M-x agd to enable Agda input method
 (defalias 'agd 'enable-agda-input)
 ;;------------------------------------------------------------------------------
+;; Setting up the path and exec-path
+
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin:/Users/amin/.cabal/bin:/Users/amin/.opam/4.02.1/bin/"))
+(setq exec-path (append exec-path '("/Users/amin/.opam/4.02.1/bin/")))
+(setq exec-path (append exec-path '("/Users/amin/.cabal/bin")))
+;;------------------------------------------------------------------------------
 ;; Add opam emacs directory to the load-path
 (setq opam-share
   (substring
     (shell-command-to-string "opam config var share 2> /dev/null") 0 -1))
 (add-to-list 'load-path (concat opam-share "/emacs/site-lisp"))
-
-(setenv "PATH" (concat (getenv "PATH") ":/Users/amin/.cabal/bin:/Users/amin/.opam/4.02.1/bin/"))
-(setq exec-path (append exec-path '("/Users/amin/.opam/4.02.1/bin/")))
-(setq exec-path (append exec-path '("/Users/amin/.cabal/bin")))
 ;;------------------------------------------------------------------------------
 ;; set up for OCaml using Opam packages and more
 
@@ -354,7 +354,7 @@
 ;;------------------------------------------------------------------------------
 ;; Disable indention
 
- (electric-indent-mode -1)
+(electric-indent-mode -1)
 ;; (defun do-nothing () )
 ;; (define-key global-map "\t" 'do-nothing)
 

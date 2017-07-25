@@ -194,6 +194,9 @@
 (check-install-package 'sublime-themes)
 (load-theme 'junio t)
 ;;------------------------------------------------------------------------------
+;; Make sure that AucTeX package is installed
+(check-install-package 'auctex)
+;;------------------------------------------------------------------------------
 ;; Load the markdown-mode
 (check-install-package 'markdown-mode)
 ;;------------------------------------------------------------------------------
@@ -245,6 +248,9 @@
 (add-to-list 'load-path (concat opam-share "/emacs/site-lisp"))
 ;;------------------------------------------------------------------------------
 ;; set up for OCaml using Opam packages and more
+
+;;install ocp-indent package from melpa
+(check-install-package 'ocp-indent)
 
 ;; The ocp-index and ocp-indent programs installed from Opam
 (require 'ocp-indent)

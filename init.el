@@ -237,15 +237,23 @@
 ;;------------------------------------------------------------------------------
 ;; Setting up the path and exec-path
 
-(setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin/:/usr/local/bin:/Users/amin/.cabal/bin:/Users/amin/.opam/4.02.1/bin/"))
-(setq exec-path (append exec-path '("/Users/amin/.opam/4.02.1/bin/")))
+(setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin/:/usr/local/bin:/Users/amin/.cabal/bin"))
 (setq exec-path (append exec-path '("/Users/amin/.cabal/bin")))
+(setq exec-path (append exec-path '("/usr/local/bin")))
 ;;------------------------------------------------------------------------------
 ;; Add opam emacs directory to the load-path
 (setq opam-share
   (substring
     (shell-command-to-string "opam config var share 2> /dev/null") 0 -1))
 (add-to-list 'load-path (concat opam-share "/emacs/site-lisp"))
+
+;; Add opam bin directory to path and exec-path
+(setq opam-bin
+  (substring
+    (shell-command-to-string "opam config var bin 2> /dev/null") 0 -1))
+(setenv "PATH" (concat (getenv "PATH") (concat ":" opam-bin)))
+(setq exec-path (append exec-path (cons opam-bin nil)))
+
 ;;------------------------------------------------------------------------------
 ;; set up for OCaml using Opam packages and more
 

@@ -93,7 +93,7 @@
  '(coq-script-indent nil)
  '(custom-safe-themes
    (quote
-    ("3cd28471e80be3bd2657ca3f03fbb2884ab669662271794360866ab60b6cb6e6" "3cc2385c39257fed66238921602d8104d8fd6266ad88a006d0a4325336f5ee02" "e9776d12e4ccb722a2a732c6e80423331bcb93f02e089ba2a4b02e85de1cf00e" "1e67765ecb4e53df20a96fb708a8601f6d7c8f02edb09d16c838e465ebe7f51b" "6952b5d43bbd4f1c6727ff61bc9bf5677d385e101433b78ada9c3f0e3787af06" "4cbec5d41c8ca9742e7c31cc13d8d4d5a18bd3a0961c18eb56d69972bbcf3071" "b9cbfb43711effa2e0a7fbc99d5e7522d8d8c1c151a3194a4b176ec17c9a8215" "6de7c03d614033c0403657409313d5f01202361e35490a3404e33e46663c2596" "ed317c0a3387be628a48c4bbdb316b4fa645a414838149069210b66dd521733f" "938d8c186c4cb9ec4a8d8bc159285e0d0f07bad46edf20aa469a89d0d2a586ea" "6df30cfb75df80e5808ac1557d5cc728746c8dbc9bc726de35b15180fa6e0ad9" default)))
+    ("9492cf1ac00c8a1f7130a867a97404dfeb6727801c6b2b40b853b91543f7af67" "3cd28471e80be3bd2657ca3f03fbb2884ab669662271794360866ab60b6cb6e6" "3cc2385c39257fed66238921602d8104d8fd6266ad88a006d0a4325336f5ee02" "e9776d12e4ccb722a2a732c6e80423331bcb93f02e089ba2a4b02e85de1cf00e" "1e67765ecb4e53df20a96fb708a8601f6d7c8f02edb09d16c838e465ebe7f51b" "6952b5d43bbd4f1c6727ff61bc9bf5677d385e101433b78ada9c3f0e3787af06" "4cbec5d41c8ca9742e7c31cc13d8d4d5a18bd3a0961c18eb56d69972bbcf3071" "b9cbfb43711effa2e0a7fbc99d5e7522d8d8c1c151a3194a4b176ec17c9a8215" "6de7c03d614033c0403657409313d5f01202361e35490a3404e33e46663c2596" "ed317c0a3387be628a48c4bbdb316b4fa645a414838149069210b66dd521733f" "938d8c186c4cb9ec4a8d8bc159285e0d0f07bad46edf20aa469a89d0d2a586ea" "6df30cfb75df80e5808ac1557d5cc728746c8dbc9bc726de35b15180fa6e0ad9" default)))
  '(fci-rule-color "#49483E")
  '(global-auto-revert-mode t)
  '(highlight-changes-colors (quote ("#FD5FF0" "#AE81FF")))
@@ -114,7 +114,7 @@
     (sublime-themes paganini-theme moe-theme ample-theme markdown-mode ## monokai-theme magit fill-column-indicator company-coq column-enforce-mode auctex)))
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
- '(preview-TeX-style-dir "/Users/amin/.emacs.d/elpa/auctex-11.89.7/latex" t)
+ '(preview-TeX-style-dir "/Users/amin/.emacs.d/elpa/auctex-11.89.7/latex")
  '(proof-three-window-mode-policy (quote hybrid))
  '(safe-local-variable-values
    (quote
@@ -192,7 +192,8 @@
 ;;------------------------------------------------------------------------------
 ;; Load the theme
 (check-install-package 'sublime-themes)
-(load-theme 'junio t)
+(check-install-package 'monokai-theme)
+(load-theme 'monokai t)
 ;;------------------------------------------------------------------------------
 ;; Make sure that AucTeX package is installed
 (check-install-package 'auctex)

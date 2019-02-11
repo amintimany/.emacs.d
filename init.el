@@ -115,7 +115,7 @@
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
    (quote
-    (sml-modeline git-gutter ocp-indent company sublime-themes paganini-theme moe-theme ample-theme markdown-mode ## monokai-theme magit fill-column-indicator company-coq column-enforce-mode auctex)))
+    (multiple-cursors sml-modeline git-gutter ocp-indent company sublime-themes paganini-theme moe-theme ample-theme markdown-mode ## monokai-theme magit fill-column-indicator company-coq column-enforce-mode auctex)))
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(preview-TeX-style-dir "/Users/amin/.emacs.d/elpa/auctex-11.89.7/latex" t)
@@ -254,6 +254,14 @@
 ;; This means we can use M-x agd to enable Agda input method
 (defalias 'agd 'enable-agda-input)
 ;;------------------------------------------------------------------------------
+;;  multiple-cursors-mode
+(check-install-package 'multiple-cursors)
+(require 'multiple-cursors)
+(global-set-key (kbd "C-c m c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+;;------------------------------------------------------------------------------
 ;; Setting up the path and exec-path
 
 (setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin/:/usr/local/bin:/Users/amin/.cabal/bin"))
@@ -383,7 +391,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:background nil)))))
 ;;------------------------------------------------------------------------------
 ;; Disable indention
 

@@ -17,6 +17,8 @@
 (tool-bar-mode -1)
 ;;    Disable scroll-bar
 (toggle-scroll-bar -1) 
+;;    Disable the annoying bell function
+(setq ring-bell-function 'ignore)
 ;;-----------------------------------------------------------------------------
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -115,7 +117,7 @@
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
    (quote
-    (multiple-cursors sml-modeline git-gutter ocp-indent company sublime-themes paganini-theme moe-theme ample-theme markdown-mode ## monokai-theme magit fill-column-indicator company-coq column-enforce-mode auctex)))
+    (multi-term multiple-cursors sml-modeline git-gutter ocp-indent company sublime-themes paganini-theme moe-theme ample-theme markdown-mode ## monokai-theme magit fill-column-indicator company-coq column-enforce-mode auctex)))
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(preview-TeX-style-dir "/Users/amin/.emacs.d/elpa/auctex-11.89.7/latex" t)

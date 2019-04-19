@@ -53,6 +53,24 @@
 ;;------------------------------------------------------------------------------
 ;; Make sure that AucTeX package is installed
 (check-install-package 'auctex)
+
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+(add-hook 'LaTeX-mode-hook 'visual-line-mode)
+(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(setq reftex-plug-into-AUCTeX t)
+(setq TeX-PDF-mode t)
+(setq TeX-source-correlate-method (quote synctex))
+
+;; use Skim as default pdf viewer
+;; Skim's displayline is used for forward search (from .tex to .pdf)
+;; option -b highlights the current line; option -g opens Skim in the background  
+(setq TeX-view-program-selection '((output-pdf "PDF Viewer")))
+(setq TeX-view-program-list
+     '(("PDF Viewer" "/Applications/Skim.app/Contents/SharedSupport/displayline -b -g %n %o %b")))
+
+
 ;;------------------------------------------------------------------------------
 ;; Load the markdown-mode
 (check-install-package 'markdown-mode)

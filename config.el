@@ -183,6 +183,8 @@
 
 (add-hook 'coq-mode-hook 'enable-show-trailing-whitespace)
 
+(setq coq-double-hit-enable t)
+
 ;; Load company-coq when opening Coq files
 (check-install-package 'company-coq)
 (add-hook 'coq-mode-hook #'company-coq-mode)

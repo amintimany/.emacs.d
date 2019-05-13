@@ -47,9 +47,7 @@
 ;;------------------------------------------------------------------------------
 ;; Load the theme
 (check-install-package 'monokai-theme)
-(check-install-package 'gruvbox-theme)
-(load-theme 'gruvbox)
-;;(load-theme 'monokai t)
+(load-theme 'monokai t)
 ;;------------------------------------------------------------------------------
 ;; Make sure that AucTeX package is installed
 (check-install-package 'auctex)

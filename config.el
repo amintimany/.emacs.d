@@ -111,13 +111,6 @@
 (require 'agda-input)
 (defun enable-agda-input () (interactive) (set-input-method "Agda"))
 ;;------------------------------------------------------------------------------
-;;  smartparens-mode
-(check-install-package 'smartparens)
-(require 'smartparens-config)
-(define-globalized-minor-mode global-smartparens-mode smartparens-mode
-  (lambda () (smartparens-mode 1)))
-(global-smartparens-mode t)
-;;------------------------------------------------------------------------------
 ;;  multiple-cursors-mode
 (check-install-package 'multiple-cursors)
 (require 'multiple-cursors)

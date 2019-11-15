@@ -45,8 +45,8 @@
 ;;------------------------------------------------------------------------------
 ;; Load the theme
 ;; (check-install-package 'monokai-theme)
-(check-install-package 'gruvbox-theme)
-(load-theme 'gruvbox-dark-hard t)
+(check-install-package 'dracula-theme)
+(load-theme 'dracula t)
 ;;------------------------------------------------------------------------------
 ;; Make sure that AucTeX package is installed
 (check-install-package 'auctex)

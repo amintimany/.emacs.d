@@ -1,22 +1,25 @@
-;; General settings
-;;    Disable startup message
+;;  General settings
+;;-----------------------------------------------------------------------------
+;;  Disable startup message
 (setq inhibit-startup-message t)
-;;    Delete selected text and replace it
+;;  Delete selected text and replace it
 (delete-selection-mode 1)
-;;    Show column number
+;;  Show column number
 (column-number-mode 1)
-;;    Correct behavior of home and end keys
+;;  Correct behavior of home and end keys
 (global-set-key [home] 'beginning-of-line)
 (global-set-key [end] 'end-of-line)
-;;    Disable the C-z shortcut. It makes Emacs crash on OS X and
-;;    I sometimes press it unintentionally
+;;  Disable the C-z shortcut. It makes Emacs crash on OS X and
+;;  I sometimes press it unintentionally
 (global-unset-key (kbd "C-z"))
-;;    Disable tool-bar
+;;  Disable tool-bar
 (tool-bar-mode -1)
-;;    Disable scroll-bar
+;;  Disable scroll-bar
 (toggle-scroll-bar -1) 
-;;    Disable the annoying bell function
+;;  Disable the annoying bell function
 (setq ring-bell-function 'ignore)
+;; Set locale
+(setenv "LANG" "en_US.UTF-8")
 ;;-----------------------------------------------------------------------------
 ;; Custom require that can fail without breaking
 (defun safe_require (req reqs)

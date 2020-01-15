@@ -79,9 +79,6 @@
 ;;------------------------------------------------------------------------------
 ;; magit -- the git mode for emacs; I am experimenting with it from time to time
 (check-install-package 'magit)
-;; ido mode
-(require 'ido)
-(ido-mode t)
 ;;------------------------------------------------------------------------------
 ;; Show trailing white space
 (defun enable-show-trailing-whitespace () (setq show-trailing-whitespace t))
@@ -139,6 +136,24 @@
     (shell-command-to-string "opam config var bin 2> /dev/null") 0 -1))
 (setenv "PATH" (concat (getenv "PATH") (concat ":" opam-bin)))
 (setq exec-path (append exec-path (cons opam-bin nil)))
+
+;;------------------------------------------------------------------------------
+;; ivy and counsel
+(check-install-package 'counsel)
+(ivy-mode 1)
+(setq ivy-use-virtual-buffers t)
+(setq enable-recursive-minibuffers t)
+(global-set-key "\C-s" 'swiper)
+(global-set-key (kbd "C-c C-r") 'ivy-resume)
+(global-set-key (kbd "M-x") 'counsel-M-x)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+(global-set-key (kbd "C-h f") 'counsel-describe-function)
+(global-set-key (kbd "C-h v") 'counsel-describe-variable)
+(global-set-key (kbd "C-h l") 'counsel-find-library)
+(global-set-key (kbd "C-h i") 'counsel-info-lookup-symbol)
+(global-set-key (kbd "C-h u") 'counsel-unicode-char)
+(global-set-key (kbd "C-c j") 'counsel-git-grep)
+(define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
 
 ;;------------------------------------------------------------------------------
 ;; set up for OCaml using Opam packages and more
@@ -274,11 +289,8 @@
 (global-set-key (kbd "C-c C--") 'comment-or-uncomment-line-or-region)
 
 ;;------------------------------------------------------------------------------
-;; Force emacs ask yes no question
+;; Force emacs ask yes no question when exiting
 (setq confirm-kill-emacs 'y-or-n-p)
-
-;;------------------------------------------------------------------------------
-;; Set up tex mode
 
 ;;------------------------------------------------------------------------------
 ;; Run emacs server

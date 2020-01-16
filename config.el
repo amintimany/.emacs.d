@@ -79,6 +79,7 @@
 ;;------------------------------------------------------------------------------
 ;; magit -- the git mode for emacs; I am experimenting with it from time to time
 (check-install-package 'magit)
+(global-set-key (kbd "C-x g") 'magit-status)
 ;;------------------------------------------------------------------------------
 ;; Show trailing white space
 (defun enable-show-trailing-whitespace () (setq show-trailing-whitespace t))
@@ -147,7 +148,6 @@
 (global-set-key (kbd "C-c C-r") 'ivy-resume)
 (global-set-key (kbd "M-x") 'counsel-M-x)
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
-(global-set-key (kbd "C-x l") 'counsel-fzf)
 (global-set-key (kbd "C-h f") 'counsel-describe-function)
 (global-set-key (kbd "C-h v") 'counsel-describe-variable)
 (global-set-key (kbd "C-h l") 'counsel-find-library)

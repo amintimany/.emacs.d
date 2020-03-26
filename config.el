@@ -20,6 +20,9 @@
 (setq ring-bell-function 'ignore)
 ;; Set locale
 (setenv "LANG" "en_US.UTF-8")
+;;------------------------------------------------------------------------------
+;; Force emacs ask yes no question when exiting
+(setq confirm-kill-emacs 'y-or-n-p)
 ;;-----------------------------------------------------------------------------
 ;; Custom require that can fail without breaking
 (defun safe_require (req reqs)
@@ -125,18 +128,30 @@
 (setq exec-path (append exec-path '("/Users/amin/.cabal/bin")))
 (setq exec-path (append exec-path '("/usr/local/bin")))
 ;;------------------------------------------------------------------------------
-;; Add opam emacs directory to the load-path
-(setq opam-share
-  (substring
-    (shell-command-to-string "opam config var share 2> /dev/null") 0 -1))
-(add-to-list 'load-path (concat opam-share "/emacs/site-lisp"))
+;; Detect if opam is installed
 
-;; Add opam bin directory to path and exec-path
-(setq opam-bin
-  (substring
-    (shell-command-to-string "opam config var bin 2> /dev/null") 0 -1))
-(setenv "PATH" (concat (getenv "PATH") (concat ":" opam-bin)))
-(setq exec-path (append exec-path (cons opam-bin nil)))
+(defvar opampresent 'nil "Whether emacs is presnt or not.")
+
+(if (executable-find "opam") (setq opampresent 't) (message "Opam not found! Will not set opam up."))
+
+;; set up opam if installed
+
+(if opampresent
+    (progn
+      ;; Add opam emacs directory to the load-path
+      (setq opam-share
+	    (substring
+	     (shell-command-to-string "opam config var share 2> /dev/null") 0 -1))
+      (add-to-list 'load-path (concat opam-share "/emacs/site-lisp"))
+      ;; Add opam bin directory to path and exec-path
+      (setq opam-bin
+	    (substring
+	     (shell-command-to-string "opam config var bin 2> /dev/null") 0 -1))
+      (setenv "PATH" (concat (getenv "PATH") (concat ":" opam-bin)))
+      (setq exec-path (append exec-path (cons opam-bin nil)))
+      )
+  ()
+  )
 
 ;;------------------------------------------------------------------------------
 ;; ivy and counsel
@@ -270,10 +285,22 @@
 ;; (defun do-nothing () )
 ;; (define-key global-map "\t" 'do-nothing)
 
+;;------------------------------------------------------------------------------
 ;; agda-mode
 
-(load-file (let ((coding-system-for-read 'utf-8))
-                (shell-command-to-string "agda-mode locate")))
+;; Detect if agda-mode is installed
+
+(defvar agdamodepresent 'nil "Whether agda-mode is presnt or not.")
+
+(if (executable-find "agda-mode") (setq agdamodepresent 't) (message "agda-mode not found! Will not set agda-mode up."))
+
+;; set up opam if installed
+
+(if agdamodepresent
+    (load-file (let ((coding-system-for-read 'utf-8))
+		 (shell-command-to-string "agda-mode locate")))
+  ()
+  )
 
 ;;------------------------------------------------------------------------------
 ;; Bind C-c C-- to toggling comments.
@@ -288,10 +315,6 @@
   )
 
 (global-set-key (kbd "C-c C--") 'comment-or-uncomment-line-or-region)
-
-;;------------------------------------------------------------------------------
-;; Force emacs ask yes no question when exiting
-(setq confirm-kill-emacs 'y-or-n-p)
 
 ;;------------------------------------------------------------------------------
 ;; Run emacs server

@@ -16,6 +16,8 @@
 (tool-bar-mode -1)
 ;;  Disable scroll-bar
 (toggle-scroll-bar -1) 
+;;  Show matching parenthesis
+(show-paren-mode 't)
 ;;  Disable the annoying bell function
 (setq ring-bell-function 'ignore)
 ;; Set locale
@@ -26,8 +28,11 @@
 ;;-----------------------------------------------------------------------------
 ;; Custom require that can fail without breaking
 (defun safe_require (req reqs)
-  (if (not (require 'req nil t))
-        (message "%s not found" reqs)))
+  (if (equal (require req 'nil 't) req)
+      nil
+    (message "%s not found!" reqs)
+    )
+  )
 
 ;;------------------------------------------------------------------------------
 ;; Packages

@@ -137,7 +137,7 @@
 
 (defvar opampresent 'nil "Whether emacs is presnt or not.")
 
-(if (executable-find "opam") (setq opampresent 't) (message "Opam not found! Will not set opam up."))
+(if (executable-find "opam") (setq opampresent 't) (message "Opam not found! Opam will not be set up."))
 
 ;; set up opam if installed
 
@@ -297,7 +297,7 @@
 
 (defvar agdamodepresent 'nil "Whether agda-mode is presnt or not.")
 
-(if (executable-find "agda-mode") (setq agdamodepresent 't) (message "agda-mode not found! Will not set agda-mode up."))
+(if (executable-find "agda-mode") (setq agdamodepresent 't) (message "agda-mode not found! agda-mode Will not be set up."))
 
 ;; set up opam if installed
 

@@ -34,6 +34,12 @@
     )
   )
 
+;; store all backup and autosave files in the tmp dir
+(setq backup-directory-alist
+      `((".*" . ,"~/.emacs/backups/")))
+(setq auto-save-file-name-transforms
+      `((".*" ,"~/.emacs/auto-saves/" t)))
+
 ;;------------------------------------------------------------------------------
 ;; Packages
 (require 'package)
@@ -320,6 +326,12 @@
   )
 
 (global-set-key (kbd "C-c C--") 'comment-or-uncomment-line-or-region)
+
+;;------------------------------------------------------------------------------
+;; configure org mode
+(with-eval-after-load 'org
+  (setq org-startup-indented t) ; Enable `org-indent-mode' by default
+  (add-hook 'org-mode-hook #'visual-line-mode))
 
 ;;------------------------------------------------------------------------------
 ;; Run emacs server

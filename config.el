@@ -227,8 +227,6 @@
 
 (setq coq-double-hit-enable t)
 
-(add-hook 'coq-mode-hook (lambda () (local-set-key  (kbd "C-c p") (lambda () (interactive) (insert "⌜⌝") (backward-char 1)))))
-
 ;; Load company-coq when opening Coq files
 (check-install-package 'company-coq)
 (add-hook 'coq-mode-hook #'company-coq-mode)

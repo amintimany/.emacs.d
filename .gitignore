@@ -6,3 +6,4 @@ ido.last
 /SessionDesktop.el
 /recentf
 transient/*
+/.mc-lists.el

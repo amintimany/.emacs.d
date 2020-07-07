@@ -22,6 +22,8 @@
 (setq ring-bell-function 'ignore)
 ;; Set locale
 (setenv "LANG" "en_US.UTF-8")
+;; Increase the default font size
+(set-face-attribute 'default nil :height 200)
 ;;------------------------------------------------------------------------------
 ;; Force emacs ask yes no question when exiting
 (setq confirm-kill-emacs 'y-or-n-p)

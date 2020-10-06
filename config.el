@@ -232,6 +232,8 @@
 ;; Load company-coq when opening Coq files
 (check-install-package 'company-coq)
 (add-hook 'coq-mode-hook #'company-coq-mode)
+;; Disable symbol prettification
+(setq company-coq-disabled-features '(prettify-symbols))
 ;;------------------------------------------------------------------------------
 ;; Making a mode git-mode and a global-flyspell-mode.
 ;; We add enabling global-flyspell-mode (when aspell is available) at

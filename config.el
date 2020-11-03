@@ -184,6 +184,8 @@
 (global-set-key (kbd "C-c j") 'counsel-git-grep)
 (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
 
+(setq counsel-find-file-ignore-regexp "\\.vo\\|\\.aux\\|\\.glob\\|.DS_STORE")
+
 ;;------------------------------------------------------------------------------
 ;; set up for OCaml using Opam packages and more
 

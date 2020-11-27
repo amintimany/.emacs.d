@@ -36,12 +36,6 @@
     )
   )
 
-;; store all backup and autosave files in the tmp dir
-(setq backup-directory-alist
-      `((".*" . ,"~/.emacs/backups/")))
-(setq auto-save-file-name-transforms
-      `((".*" ,"~/.emacs/auto-saves/" t)))
-
 ;;------------------------------------------------------------------------------
 ;; Packages
 (require 'package)

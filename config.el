@@ -183,13 +183,6 @@
 ;;------------------------------------------------------------------------------
 ;; set up for OCaml using Opam packages and more
 
-;;install ocp-indent package from melpa
-(check-install-package 'ocp-indent)
-
-;; The ocp-index and ocp-indent programs installed from Opam
-(require 'ocp-indent)
-(safe_require 'ocp-index "ocp-index")
-
 ;; Load merlin-mode
 (safe_require 'merlin "merlin")
 ;; Start merlin on ocaml files
@@ -203,14 +196,6 @@
 ;; enable company for OCaml
 (add-hook 'tuareg-mode-hook 'company-mode t)
 (add-hook 'caml-mode-hook 'company-mode t)
-
-;; company-ocp-index (submodule)
-(load-file "~/.emacs.d/company-ocp-index/company-ocp-index.el")
-(require 'company-ocp-index)
-(defun enable-company-ocp-index ()
-(add-to-list (make-local-variable 'company-backends) 'company-ocp-index))
-(add-hook 'tuareg-mode-hook 'enable-company-ocp-index)
-(add-hook 'caml-mode-hook 'enable-company-ocp-index)
 
 ;; Tuareg for OCaml
 (load-file "~/.emacs.d/tuareg/tuareg-site-file.el")

@@ -180,26 +180,6 @@
 
 (setq counsel-find-file-ignore-regexp "\\.vo\\|\\.aux\\|\\.glob\\|.DS_STORE")
 
-;;------------------------------------------------------------------------------
-;; set up for OCaml using Opam packages and more
-
-;; Load merlin-mode
-(safe_require 'merlin "merlin")
-;; Start merlin on ocaml files
-(add-hook 'tuareg-mode-hook 'merlin-mode t)
-(add-hook 'caml-mode-hook 'merlin-mode t)
-;; Enable auto-complete
-(setq merlin-use-auto-complete-mode 'easy)
-;; Use opam switch to lookup ocamlmerlin binary
-(setq merlin-command 'opam)
-
-;; enable company for OCaml
-(add-hook 'tuareg-mode-hook 'company-mode t)
-(add-hook 'caml-mode-hook 'company-mode t)
-
-;; Tuareg for OCaml
-(load-file "~/.emacs.d/tuareg/tuareg-site-file.el")
-;;------------------------------------------------------------------------------
 ;; Coq and Proof General
 (load-file "~/.emacs.d/ProofGeneral/generic/proof-site.el")
 
